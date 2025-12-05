@@ -5,6 +5,7 @@ import javafx.scene.control.TextArea;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -43,6 +44,9 @@ public class LottoGenerator implements Runnable {
 
         return lottoNumbers;
     }
+    //Generate Fake Win Mock
+
+
 
     // Insert a list into the MySQL table
     private void insertIntoDatabase(int runNumber, List<Integer> nums) {
@@ -68,6 +72,9 @@ public class LottoGenerator implements Runnable {
 
             // 2. Store in the Hashtable
             lottoResults.put(run, numbers);
+            //Generate Fake Win comment out 
+//            List<Integer> winner = Arrays.asList(5, 12, 23, 34, 45, 56);
+//            lottoResults.put(run, winner);
 
             // 3. Insert into the DB
             insertIntoDatabase(run, numbers);
