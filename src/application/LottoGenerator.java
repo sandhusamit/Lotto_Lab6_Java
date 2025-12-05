@@ -17,20 +17,25 @@ public class LottoGenerator implements Runnable {
 
     private TextArea outputArea;   // UI TextArea reference
 
-    private final int MAX = 101;   // 0–100 inclusive
-
+    private int max;   // 0–100 inclusive
+    private int ballsQty;
+    
+    private int min;
     // Constructor
-    public LottoGenerator(Hashtable<Integer, List<Integer>> lottoResults, TextArea outputArea) {
+    public LottoGenerator(Hashtable<Integer, List<Integer>> lottoResults, TextArea outputArea, int min, int max, int ballsQty) {
         this.lottoResults = lottoResults;
         this.outputArea = outputArea;
+        this.min = min;
+        this.max = max;
+        this.ballsQty = ballsQty;
     }
 
     // Generate ONE set of 6 UNIQUE lotto numbers
     public List<Integer> generateLottoNumbers() {
         List<Integer> lottoNumbers = new ArrayList<>();
 
-        while (lottoNumbers.size() < 6) {
-            int num = random.nextInt(MAX);
+        while (lottoNumbers.size() < ballsQty) {
+            int num = random.nextInt(max);
             if (!lottoNumbers.contains(num)) {
                 lottoNumbers.add(num);
             }
